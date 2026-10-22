@@ -1,0 +1,36 @@
+forward engineer utiliza comandos mais específicos, se certificando de que esta tudo nos eixos, como por exemplo: 
+create schema if not exists, o comando serve para criar uma database especificamente se essa não existir.
+
+Outra diferença que encontrei é que o forward engineer não declara de uma vez um campo como primary key
+no meu código, assim que eu criei o campo idautor eu pus imediatamente as extensões auto incremento (não coloquei not null porque
+a partida, se fosse auto incrementado um número, nunca seria nulo)e primary key, ja o forward engineer não, ele declarou a campo e em seguida, no final, escreveu o script PRIMARY KEY('nome do campo').
+
+o forward engineer também fez o uso de comandos que eu desconheço, como:
+
+ENGINE = InnoDB; (serve para escolher o interpretador do código, que vai transformar o código em executável)
+INDEX `nome do campo` (`nome do campo` ASC) VISIBLE;
+ CONSTRAINT `nome do campo`
+    FOREIGN KEY (`nome do campo`)
+    REFERENCES `nome da database`.`nome da tabela` (`nome do campo`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+
+| Forma simples           | Forma completa       |
+| ----------------------- | -------------------- |
+| Mais rápida de escrever | Mais controlada      |
+| Menos manutenção        | Melhor para produção |
+| Menos explícita         | Totalmente explícita |
+| Índice automático       | Índice controlado    |
+
+
+e
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+servem para 
+✅ Deixar o banco exatamente como estava antes do script rodar
+✅ Evitar efeitos colaterais globais
+✅ Garantir segurança depois da importação
+
+Essas foram as diferenças que eu encontrei enquanto verificava o script do forward engineer..

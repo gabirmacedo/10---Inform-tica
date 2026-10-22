@@ -1,0 +1,13 @@
+insert into Clientes value (null, 'Aníbal', 'lisboa'), (null, 'Belmiro', 'braga'), (null, 'casimir', 'coimbra');
+insert into Produtos value (Null, 'portátil', 400), (null, 'berbequim', 50),(null, 'MS office', 150);
+insert into Encomendas value (Null,1,1,10),(null,2,1,2),(null,3,2,5),(null,1,3,1);
+delete from Encomendas where NEnc = 4;
+delete from Produtos where Produto = 'MS office';
+insert into Produtos value (null, 'MS office', 150);
+insert into Encomendas value (null,1,4,1);
+update Produtos set Preco = 350 where Produto = 'portátil';
+update Produtos set Preco = 350 where Produto = 'berbequim';
+insert into Produtos value (Null, 'impressora', 100),(null, 'portátil', 250);
+insert into Encomendas value (Null,1, 5,3),(null,3, 6,2);
+select * from produtos;
+select CodProd,Preco from produtos;
